@@ -1,34 +1,5 @@
 #include <stdio.h>
-
-typedef struct _pixel {
-    unsigned short int r;
-    unsigned short int g;
-    unsigned short int b;
-} Pixel;
-
-typedef struct _image {
-    // [width][height][rgb]
-    // 0 -> r
-    // 1 -> g
-    // 2 -> b
-    unsigned short int pixel[512][512][3];
-    unsigned int width;
-    unsigned int height;
-} Image;
-
-// functions:
-Image readImage(Image img);
-void printImage(Image img);
-int max(int a, int b);
-int pixel_igual(Pixel p1, Pixel p2);
-Image grayScale(Image img);
-Image blur(Image img);
-Image rotate90Right(Image img);
-Image numberOfRotations(Image img);
-Image mirroring(Image img);
-Image negativeColors(Image img);
-Image cutImage(Image img);
-Image sepia(Image img);
+#include "functions.h"
 
 int main() {
   Image img;
@@ -251,7 +222,7 @@ Image negativeColors(Image img) {
             img.pixel[i][j][0] = 255 - img.pixel[i][j][0];
             img.pixel[i][j][1] = 255 - img.pixel[i][j][1];
             img.pixel[i][j][2] = 255 - img.pixel[i][j][2];
-        }
+      }
     }
     return img;
 }
