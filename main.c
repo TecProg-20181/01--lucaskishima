@@ -5,14 +5,14 @@ int main() {
   Image img;
   img = readImage(img);
 
-  int n_opcoes;
-  scanf("%d", &n_opcoes);
+  int n_options;
+  scanf("%d", &n_options);
 
-  for(int i = 0; i < n_opcoes; ++i) {
-      int opcao;
-      scanf("%d", &opcao);
+  for(int i = 0; i < n_options; ++i) {
+      int options;
+      scanf("%d", &options);
 
-      switch(opcao) {
+      switch(options) {
           case 1: {
               img = grayScale(img);
               break;
@@ -49,6 +49,17 @@ int main() {
   return 0;
 }
 
+int max(int a, int b) {
+    if (a > b)
+        return a;
+    return b;
+}
+
+int min(int a, int b) {
+    if (a < b)
+        return a;
+    return b;
+}
 
 Image readImage(Image img){
 
@@ -91,7 +102,7 @@ void printImage(Image img){
 
 
 Image grayScale(Image img) {
-    
+
     for (unsigned int i = 0; i < img.height; ++i) {
         for (unsigned int j = 0; j < img.width; ++j) {
             int media = img.pixel[i][j][0] +
@@ -115,10 +126,10 @@ Image blur(Image img) {
     for (unsigned int j = 0; j < img.width; ++j) {
       Pixel media = {0, 0, 0};
 
-      unsigned int min_height = (img.height - 1 > i + size/2) ? i + size/2 : img.height - 1;
-      unsigned int min_width = (img.width - 1 > j + size/2) ? j + size/2 : img.width - 1;
-      for(int x = (0 > i - size/2 ? 0 : i - size/2); x <= min_height; ++x) {
-          for(int y = (0 > j - size/2 ? 0 : j - size/2); y <= min_width; ++y) {
+      unsigned int min_height = min(img.height - 1, i+ size/2);
+      unsigned int min_width = min(img.width - 1, j + size/2);
+      for(int x = max(0, i - size/2); x <= min_height; ++x) {
+          for(int y = max(0, j - size/2); y <= min_width; ++y) {
               media.r += img.pixel[x][y][0];
               media.g += img.pixel[x][y][1];
               media.b += img.pixel[x][y][2];
@@ -239,15 +250,15 @@ Image sepia(Image img){
           pixel[2] = img.pixel[x][j][2];
 
           int p =  pixel[0] * .393 + pixel[1] * .769 + pixel[2] * .189;
-          int menor_r = (255 >  p) ? p : 255;
+          int menor_r = min(255, p);
           img.pixel[x][j][0] = menor_r;
 
           p =  pixel[0] * .349 + pixel[1] * .686 + pixel[2] * .168;
-          menor_r = (255 >  p) ? p : 255;
+          menor_r = min(255, p);
           img.pixel[x][j][1] = menor_r;
 
           p =  pixel[0] * .272 + pixel[1] * .534 + pixel[2] * .131;
-          menor_r = (255 >  p) ? p : 255;
+          menor_r = min(255, p);
           img.pixel[x][j][2] = menor_r;
       }
   }

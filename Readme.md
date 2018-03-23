@@ -35,6 +35,14 @@ O exemplo acima mostra uma imagem com 2 linhas e 3 colunas.
 Se você salvar o exemplo em um arquivo de extensão “.ppm”,
 esta imagem poderá ser vista no seu computador como uma imagem normal.
 
+Executando photopobre
+------
+Para gerar o executável do photopobre, pode-se fazer uso do comando
+"make" no seu terminal.
+
+```
+make
+```
 
 Leitura e Escrita de Imagens
 ------
@@ -44,7 +52,7 @@ O seu programa deve ser executado da seguinte forma:
 ```
 cat lena.ppm entrada.txt | ./photopobre > saida.ppm
 ```
-Este comando irá inserir na entrada do seu programa a imagem “lena.ppm” 
+Este comando irá inserir na entrada do seu programa a imagem “lena.ppm”
 e o que estiver escrito no arquvido de entrada.txt.
 Este arquivo de entrada pode ser utilizado para descrever quantas e quais
 operações vão ser feitas nesta imagem. Por exemplo:
@@ -87,4 +95,3 @@ Cada pixel possui 3 componentes,
 o RGB, do inglês Red, Green e Blue (Vermelho, Verde e Azul).
 Cada componente varia de 0 a 255, sendo 0 a ausência daquela cor,
 e 255 a total presença daquela cor.
-

@@ -6,7 +6,7 @@ void printImage(Image img);
 
 int max(int a, int b);
 
-int pixel_igual(Pixel p1, Pixel p2);
+int min(int a, int b);
 
 Image grayScale(Image img);
 
